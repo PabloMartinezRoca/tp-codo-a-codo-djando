@@ -13,35 +13,25 @@
 {% block contenido %}
     <!-- Contenido Principal -->
     <div class="container">
+
+        {% for project in projects %}
+        
         <!-- Proyecto -->
         <div class="row project">
             <div class="col-lg-3 col-md-4 offset-lg-1">
-                <img class="img-fluid" src="{% static 'core/img/about-bg.jpg' %}" alt="" width="auto" height="auto" />
+                <img class="img-fluid" src="{{ project.imagen.url }}" alt="" width="auto" height="auto" />
             </div>
             <div class="col-lg-7 col-md-8">
-                <h2 class="section-heading title">Segundo proyecto</h2>
+                <h2 class="section-heading title">{{ project.titulo }}</h2>
+                <p>{{ project.descripcion }}</p>
                 <p>
-                    As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm....
-                </p>
-                <p>
-                    <a href="https://google.com">Más información</a>
+                    {% if project.link %}
+                    <a href="{{ project.link }}" target="_blank">Más información</a>
+                    {% endif %}
                 </p>
             </div>
         </div>
-        <!-- Proyecto -->
-        <div class="row project">
-            <div class="col-lg-3 col-md-4 offset-lg-1">
-                <img class="img-fluid" src="{% static 'core/img/home-bg.jpg' %}" alt="" width="auto" height="auto" />
-            </div>
-            <div class="col-lg-7 col-md-8">
-                <h2 class="section-heading title">Primer proyecto</h2>
-                <p>
-                    As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm....
-                </p>
-                <p>
-                    <a href="https://google.com">Más información</a>
-                </p>
-            </div>
-        </div>
+
+        {% endfor %}
     </div>
 {% endblock contenido %}

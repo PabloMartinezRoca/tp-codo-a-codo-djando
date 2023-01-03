@@ -13,6 +13,8 @@ class Proyecto(models.Model):
         upload_to='galeria/imagenes/proyectos/', verbose_name='Imagen del proyecto')
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
+    # campo agregado posteriormente al modelo
+    link = models.URLField(verbose_name='Hiperevínculo', blank=True, null=True)
 
     class Meta:
         verbose_name = 'proyecto'
