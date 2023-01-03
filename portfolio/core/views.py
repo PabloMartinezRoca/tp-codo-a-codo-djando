@@ -1,26 +1,16 @@
-from django.shortcuts import render, HttpResponse
-import datetime
+from django.shortcuts import render
+from django.conf import settings
 
 # Create your views here.
 
-today = datetime.date.today()
-year = today.year
-context = {
-    'year': year,
-}
-
 
 def home(request):
-    return render(request, 'core/home.html', context)
+    return render(request, 'core/home.html', settings.FECHAS)
 
 
 def about(request):
-    return render(request, 'core/about.html', context)
-
-
-def portfolio(request):
-    return render(request, 'core/portfolio.html', context)
+    return render(request, 'core/about.html', settings.FECHAS)
 
 
 def contacto(request):
-    return render(request, 'core/contacto.html', context)
+    return render(request, 'core/contacto.html', settings.FECHAS)

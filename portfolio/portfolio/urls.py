@@ -15,13 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-from core import views
+from core import views as core_views
+from galeria import views as galeria_views
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.home, name='home'),
-    path('about/', views.about, name='about'),
-    path('portfolio/', views.portfolio, name='portfolio'),
-    path('contacto/', views.contacto, name='contacto'),
+    path('home/', core_views.home, name='home'),
+    path('about/', core_views.about, name='about'),
+    path('portfolio/', galeria_views.portfolio, name='portfolio'),
+    path('contacto/', core_views.contacto, name='contacto'),
 ]
+
+# Permite acceder a los archivos estáticos (media)
+# Esta extensión solamente funciones en modo DEBUG
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
